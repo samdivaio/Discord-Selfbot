@@ -22,8 +22,6 @@ updater () {
 			echo "The bot is up to date."
 			sleep 1
 		else
-			read -t 10 -n 1 -p "There is an update available. Download now? (y/n):" input
-			if [[ "$input" =~ "y" ]] ; then
 				echo ""
 				echo "Installing update"
 				echo "Updating to latest stable build."
@@ -37,10 +35,6 @@ updater () {
 					echo "Update succeeded"
 					sleep 2
 				fi
-			else
-				echo ""
-				echo "Cancelled update"
-			fi
 		fi
 		sleep 1
 	else

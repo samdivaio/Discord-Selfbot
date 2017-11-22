@@ -22,25 +22,19 @@ updater () {
 			echo "The bot is up to date."
 			sleep 1
 		else
-			read -t 10 -n 1 -p "There is an update available. Download now? (y/n):" input
-			if [[ "$input" =~ "y" ]] ; then
 				echo ""
 				echo "Installing update"
-				echo "Updating to latest stable build."
-				if git pull origin master ; then
+				echo "Updating to latest dev build."
+				if git pull origin dev ; then
 					echo "Update succeeded"
 					sleep 2
 				else
-					echo "Pull failed, attempting to hard reset to origin master (settings are still saved)"
+					echo "Pull failed, attempting to hard reset to origin dev (settings are still saved)"
 					git fetch --all
-					git reset --hard origin/master
+					git reset --hard origin/dev
 					echo "Update succeeded"
 					sleep 2
 				fi
-			else
-				echo ""
-				echo "Cancelled update"
-			fi
 		fi
 		sleep 1
 	else
